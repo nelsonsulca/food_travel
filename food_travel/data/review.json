@@ -1,0 +1,29 @@
+[
+    {
+        "id": 105252986502759658344169430720070180380,
+        "tipo": "Review",
+        "id_destino": 2132,
+        "id_usuario": 255454,
+        "calificacion": 4,
+        "comentario": "la comida estuvo muy rica",
+        "animo": "psitivo"
+    },
+    {
+        "id": 267161928180358956653914995087378848565,
+        "tipo": "Review",
+        "id_destino": 12,
+        "id_usuario": 5455,
+        "calificacion": 1,
+        "comentario": "la comida fue un asco ya que tenia mucho ajo",
+        "animo": "negativo"
+    },
+    {
+        "id": 324432255946600063623242572476091161049,
+        "tipo": "Review",
+        "id_destino": 45322,
+        "id_usuario": 58825,
+        "calificacion": 3,
+        "comentario": "los mozos se tardaron mucho",
+        "animo": "positivo"
+    }
+]

@@ -1,0 +1,36 @@
+[
+    {
+        "id": 12607313204422742633471000781494689931,
+        "tipo": "Usuario",
+        "nombre": "menganito",
+        "apellido": "diaz",
+        "historial_rutas": [
+            2,
+            5,
+            8
+        ]
+    },
+    {
+        "id": 31241899566638611460674830516627381272,
+        "tipo": "Usuario",
+        "nombre": "julio",
+        "apellido": "cruz",
+        "historial_rutas": [
+            9,
+            74,
+            23,
+            52
+        ]
+    },
+    {
+        "id": 239207984910096833184219546946728950242,
+        "tipo": "Usuario",
+        "nombre": "juan",
+        "apellido": "perez",
+        "historial_rutas": [
+            4,
+            8,
+            10
+        ]
+    }
+]

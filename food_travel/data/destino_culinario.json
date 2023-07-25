@@ -1,0 +1,20 @@
+[
+    {
+        "id": 273349988518470192246335625916293869993,
+        "tipo": "DestinoCulinario",
+        "nombre": "El pollo loco",
+        "tipo_cocina": "rapida",
+        "ingredientes": [
+            "pollo",
+            "huevos",
+            "aceite",
+            "especias"
+        ],
+        "precio_minimo": 25.5,
+        "precio_maximo": 100.0,
+        "popularidad": 4.5,
+        "disponibilidad": true,
+        "id_ubicacion": 4,
+        "imagen": "imagen"
+    }
+]
