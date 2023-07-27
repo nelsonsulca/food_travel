@@ -1,23 +1,9 @@
 [
     {
-        "id": 12965792201017924440289892587909057479,
+        "id": 237777356667266543389505901399459764297,
         "tipo": "Actividad",
-        "nombre": "La fiesta de comidas",
-        "destino_id": 125,
-        "hora_inicio": "2023-07-04T09:00:00"
-    },
-    {
-        "id": 281316841103765226432427016631066724259,
-        "tipo": "Actividad",
-        "nombre": "Una alegr\u00eda en tu paladar",
-        "destino_id": 48,
-        "hora_inicio": "2023-10-02T10:00:00"
-    },
-    {
-        "id": 187815153961037560522322600066212155603,
-        "tipo": "Actividad",
-        "nombre": "El terror de los vegetales",
-        "destino_id": 1235,
-        "hora_inicio": "2023-05-01T02:00:00"
+        "nombre": "la serenita viajera",
+        "destino_id": 4444,
+        "hora_inicio": "3 25"
     }
 ]

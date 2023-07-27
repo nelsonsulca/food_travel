@@ -1,0 +1,12 @@
+[
+    {
+        "id": 77108916929267797503019824739616538656,
+        "tipo": "RutaVisitada",
+        "nombre": "la ruta de los borrachos",
+        "destinos": [
+            4555,
+            8888,
+            2222
+        ]
+    }
+]

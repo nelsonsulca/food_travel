@@ -1,82 +1,246 @@
 import datos
 from models import usuario, destino_culinario, actividad, ubicacion, review, ruta_visita
 
-# Destinos Culinarios
-destino1= destino_culinario.DestinoCulinario("El pollo loco", "rapida", ["pollo", "huevos", "aceite", "especias"], 25.50, 100.00, 4.5, True, 4, "imagen")
 
-lista_destinos=[destino1]
-datos.guardar_datos_destinoCulinario(lista_destinos)
-print()
-print("MOSTRAMOS LOS DATOS DE LOS DESTINOS CULINARIOS ALMACENADOS EN EL ARCHIVO JSON:")
+def agregar_usuario():
+    nombre = input("Ingrese el nombre del usuario: ")
+    apellido = input("Ingrese el apellido del usuario: ")
+    rutas= int(input("Ingrese la cantidad de rutas realizadas: "))
+    historial_rutas= []
+    for i in range(rutas):
+        id_ruta= int(input(f"Ingrese el id de la ruta recorrida: "))
+        historial_rutas.append(id_ruta)
 
-# datos.mostrar_datos_destinoCulinario()
+    nuevo_usuario = usuario.Usuario(nombre, apellido, historial_rutas)
+    lista_usuarios = datos.cargar_datos('usuarios')
 
+    if lista_usuarios is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_usuarios = []
+    
+    lista_usuarios.append(nuevo_usuario)
 
-# Usuarios
-usuario1=usuario.Usuario("menganito", "diaz", [2,5,8])
-usuario2=usuario.Usuario("julio", "cruz", [9,74,23,52])
-usuario3=usuario.Usuario("juan", "perez", [4,8,10])
-
-lista_usuarios=[usuario1, usuario2, usuario3]
-datos.guardar_datos_usuario(lista_usuarios)
-print()
-print()
-print("MOSTRAMOS LOS DATOS DE LOS USUARIOS ALMACENADOS EN EL ARCHIVO JSON:")
-
-# datos.mostrar_datos_usuario()
+    datos.guardar_datos(lista_usuarios, 'usuarios')
+    print("Usuario agregado exitosamente.")
 
 
-# Actividades
-actividad1=actividad.Actividad("La fiesta de comidas", 125, "2023-07-04T09:00:00")
-actividad2=actividad.Actividad("Una alegría en tu paladar", 48, "2023-10-02T10:00:00")
-actividad3=actividad.Actividad("El terror de los vegetales", 1235, "2023-05-01T02:00:00")
+def agregar_actividad():
+    nombre = input("Ingrese el nombre de la actividad: ")
+    destino_id = int(input("Ingrese el identificador de la actividad: "))
+    hora_inicio = input("Ingrese la hora de inicio de la actividad ")
 
-lista_actividades=[actividad1, actividad2, actividad3]
-datos.guardar_datos_actividad(lista_actividades)
-print()
-print()
-print("MOSTRAMOS LOS DATOS DE LAS ACTIVIDADES ALMACENADOS EN EL ARCHIVO JSON:")
+    nueva_actividad = actividad.Actividad(nombre, destino_id, hora_inicio)
+    lista_actividades = datos.cargar_datos('actividades') # Se crea una lista con los objetos que retorna la funcion cargar_datos
 
-# datos.mostrar_datos_actividad()
+    if lista_actividades is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_actividades = []
+    lista_actividades.append(nueva_actividad)
 
-
-# Ubicaciones
-ubicacion1=ubicacion.Ubicacion("san martin 123", ["39° 17′ N", "76° 36′ W"])
-ubicacion2=ubicacion.Ubicacion("alverdi 523", ["40° 18′ N", "36° 10′ W"])
-ubicacion3=ubicacion.Ubicacion("san juan 321", ["29° 10′ N", "45° ′ W"])
-
-lista_ubicacion=[ubicacion1, ubicacion2, ubicacion3]
-datos.guardar_datos_ubicacion(lista_ubicacion)
-print()
-print()
-print("MOSTRAMOS LOS DATOS DE LAS UBICACIONES ALMACENADOS EN EL ARCHIVO JSON:")
-
-# datos.mostrar_datos_ubicacion()
+    datos.guardar_datos(lista_actividades, 'actividades')
+    print("Actividad agregada exitosamente.")
 
 
-# Reviews
-review1=review.Review(2132, 255454, 4, "la comida estuvo muy rica", "psitivo")
-review2=review.Review(12, 5455, 1, "la comida fue un asco ya que tenia mucho ajo", "negativo")
-review3=review.Review(45322, 58825, 3, "los mozos se tardaron mucho", "positivo")
+def agregar_destino_culinario():
+    nombre = input("Ingrese el nombre del destino: ")
+    tipo_cocina = input("Ingrese el tipo de cocina: ")
+    cant_ingredientes= int(input("Ingrese la cantidad de ingredientes utilizados: "))
+    ingredientes= []
+    for i in range(1,cant_ingredientes + 1):
+        ingrediente= input(f"Ingrese el ingrediente {i}: ")
+        ingredientes.append(ingrediente)
+    precio_minimo= float(input("Ingrese el precio mínimo: "))
+    precio_maximo= float(input("Ingrese el precio máximo: "))
+    popularidad= float(input("Ingrese la popularidad del destino culinario: "))
+    disponibilidad= bool(input("Ingrese True si esta disponible o False si no lo está: "))
+    id_ubicacion= int(input("Ingrese el id de la ubicacion del destino culinario: "))
+    imagen= "imagen"    
 
-lista_review=[review1, review2, review3]
-datos.guardar_datos_review(lista_review)
-print()
-print()
-print("MOSTRAMOS LOS DATOS DE LOS REVIEWS ALMACENADOS EN EL ARCHIVO JSON:")
+    nuevo_destino = destino_culinario.DestinoCulinario(nombre, tipo_cocina, ingredientes, precio_minimo, precio_maximo, popularidad, disponibilidad, id_ubicacion, imagen)
+    lista_destinos = datos.cargar_datos('destino_culinario') # Se crea una lista con los objetos que retorna la funcion cargar_datos
 
-# datos.mostrar_datos_review()
+    if lista_destinos is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_destinos = []
+    lista_destinos.append(nuevo_destino)
+
+    datos.guardar_datos(lista_destinos, 'destino_culinario')
+    print("Destino agregado exitosamente.")
 
 
-# Ruta Visita
-rutaVisita1=ruta_visita.RutaVisitada("ruta del cabrito", [2132, 255454, 4])
-rutaVisita2=ruta_visita.RutaVisitada("ruta del vino vallisto", [12, 5455, 1])
-rutaVisita3=ruta_visita.RutaVisitada("ruta del queso", [45322, 58825, 3])
+def agregar_review():
+    id_destino = int(input("Ingrese el id del destino culinario que quiere calificar: "))
+    id_usuario = int(input("Ingrese el id del usuario que escribe el review: "))
+    calificacion = int(input("Ingrese una calificacion del 1 al 5: "))
+    comentario = input("Ingrese un comentario: ")
+    animo = input("Ingrese si el lugar le parecio Positivo o Negativo: ")
 
-lista_rutaVisitas=[rutaVisita1, rutaVisita2, rutaVisita3]
-datos.guardar_datos_rutaVisita(lista_rutaVisitas)
-print()
-print()
-print("MOSTRAMOS LOS DATOS DE LOS REVIEWS ALMACENADOS EN EL ARCHIVO JSON:")
+    nuevo_review = review.Review(id_destino, id_usuario, calificacion, comentario, animo)
+    lista_reviews = datos.cargar_datos('review') # Se crea una lista con los objetos que retorna la funcion cargar_datos
 
-datos.mostrar_datos_rutaVisita()
+    if lista_reviews is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_reviews = []
+    lista_reviews.append(nuevo_review)
+
+    datos.guardar_datos(lista_reviews, 'reviews')
+    print("Review agregado exitosamente.")
+
+
+def agregar_ruta():
+    nombre = input("Ingrese el nombre de la ruta: ")
+    cant_destinos= int(input("Ingrese la cantidad de destinos culinarios que tiene la ruta visita: "))
+    destinos= []
+    for i in range(1,cant_destinos+1):
+        id_destino= int(input(f"Ingrese el id del destino {i}: "))
+        destinos.append(id_destino)
+
+    nueva_ruta = ruta_visita.RutaVisitada(nombre, destinos)
+    lista_rutas = datos.cargar_datos('ruta_visita') # Se crea una lista con los objetos que retorna la funcion cargar_datos
+
+    if lista_rutas is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_rutas = []
+    lista_rutas.append(nueva_ruta)
+
+    datos.guardar_datos(lista_rutas, 'ruta_visita')
+    print("Actividad agregada exitosamente.")
+
+def agregar_ubicacion():
+    direccion = input("Ingrese la direccion de la ubicacion: ")
+    latitud= input("Ingrese la latitud de la ubicacion: ")
+    longitud= input("Ingrese la longitud de la ubicacion: ")
+    coordenadas= [latitud, longitud]
+    
+    nueva_ubicacion = ubicacion.Ubicacion(direccion, coordenadas)
+    lista_ubicacion = datos.cargar_datos('ubicacion') # Se crea una lista con los objetos que retorna la funcion cargar_datos
+
+    if lista_ubicacion is None:  # Si no hay objetos en el archivo, se crea una lista vacía
+        lista_ubicacion = []
+    lista_ubicacion.append(nueva_ubicacion)
+
+    datos.guardar_datos(lista_ubicacion, 'ubicacion')
+    print("Actividad agregada exitosamente.")
+
+
+def menu_eliminar():
+    
+    print()
+    print("1- Actividad\n2- Destino Culinario\n3- Review\n4- Ruta Visitada\n5- Ubicacion\n6- Usuario")
+    opcion=int(input("Seleccione una opcion para borrar: "))
+    if opcion==1:
+        id_actividad=int(input("Ingrese el id de la actividad que quiere eliminar: "))
+        datos.eliminar_datos(id_actividad, "actividades") 
+    elif opcion==2:
+        id_destinoCulinario=int(input("Ingrese el id del destino culinario que quiere eliminar: "))
+        datos.eliminar_datos(id_destinoCulinario, "destino_culinario") 
+    elif opcion==3:
+        id_review=int(input("Ingrese el id de la review que quiere eliminar: "))
+        datos.eliminar_datos(id_review, "reviews") 
+    elif opcion==4:
+        id_rutaVisita=int(input("Ingrese el id de la ruta visitada que quiere eliminar: "))
+        datos.eliminar_datos(id_rutaVisita, "ruta_visita") 
+    elif opcion==5:
+        id_ubicacion=int(input("Ingrese el id de la ubicacion que quiere eliminar: "))
+        datos.eliminar_datos(id_ubicacion, "ubicacion") 
+    elif opcion==6:
+        id_usuario=int(input("Ingrese el id del usuario que quiere eliminar: "))
+        datos.eliminar_datos(id_usuario, "usuarios") 
+
+
+def menu_mostrar():
+    
+    print()
+    print("1- Actividad\n2- Destino Culinario\n3- Review\n4- Ruta Visitada\n5- Ubicacion\n6- Usuario")
+    opcion=int(input("Seleccione una opcion para mostrar: "))
+    if opcion==1:        
+        datos.mostrar_datos("actividades") 
+    elif opcion==2:        
+        datos.mostrar_datos("destino_culinario") 
+    elif opcion==3:       
+        datos.mostrar_datos("reviews") 
+    elif opcion==4:        
+        datos.mostrar_datos("ruta_visita") 
+    elif opcion==5:        
+        datos.mostrar_datos("ubicacion") 
+    elif opcion==6:        
+        datos.mostrar_datos("usuarios") 
+
+
+def menu_actualizar():
+    print()
+    print("1- Actividad\n2- Destino Culinario\n3- Review\n4- Ruta Visitada\n5- Ubicacion\n6- Usuario")
+    opcion=int(input("Seleccione una opcion para actualizar: "))
+    if opcion==1:
+        id_actividad=int(input("Ingrese el id de la actividad que quiere actualizar: "))
+        datos.actualizar_datos(id_actividad, "actividades") 
+    elif opcion==2:
+        id_destinoCulinario=int(input("Ingrese el id del destino culinario que quiere actualizar: "))
+        datos.actualizar_datos(id_destinoCulinario, "destino_culinario") 
+    elif opcion==3:
+        id_review=int(input("Ingrese el id de la review que quiere actualizar: "))
+        datos.actualizar_datos(id_review, "reviews") 
+    elif opcion==4:
+        id_rutaVisita=int(input("Ingrese el id de la ruta visitada que quiere actualizar: "))
+        datos.actualizar_datos(id_rutaVisita, "ruta_visita") 
+    elif opcion==5:
+        id_ubicacion=int(input("Ingrese el id de la ubicacion que quiere actualizar: "))
+        datos.actualizar_datos(id_ubicacion, "ubicacion") 
+    elif opcion==6:
+        id_usuario=int(input("Ingrese el id del usuario que quiere actualizar: "))
+        datos.actualizar_datos(id_usuario, "usuarios") 
+
+
+def main():
+
+    
+    while True:
+        print("1. Crear")
+        print("2. Leer")
+        print("3. Actualizar")
+        print("4. Borrar")
+        print("5. Salir")
+        
+        opcion = int(input("Seleccione una opción: "))
+
+        if opcion == 1:
+
+            while True:
+                print("1. Agregar usuario")
+                print("2. Agregar actividad")
+                print("3. Agregar destino culinario")
+                print("4. Agregar review")
+                print("5. Agregar ruta visitada")
+                print("6. Agregar ubicacion")
+                print("7. Salir")
+
+                opcion2= int(input("Seleccione una opción: "))
+
+                if opcion2 == 1:
+                    agregar_usuario()
+                elif opcion2 == 2:
+                    agregar_actividad()
+                elif opcion2 == 3:
+                    agregar_destino_culinario()
+                elif opcion2 == 4:
+                    agregar_review()
+                elif opcion2 == 5:
+                    agregar_ruta()
+                elif opcion2 == 6:
+                    agregar_ubicacion()
+                elif opcion2 == 7:            
+                    break
+                else:
+                    print("Opción no válida. Por favor, seleccione una opción válida.")
+
+        elif opcion == 2:
+            menu_mostrar()
+        elif opcion == 3:
+            menu_actualizar()
+        elif opcion == 4:
+            menu_eliminar()       
+        elif opcion == 5:
+            print("¡Hasta luego!")
+            break
+        else:
+            print("Opción no válida. Por favor, seleccione una opción válida.")
+
+if __name__ == "__main__":
+    main()
+
+
