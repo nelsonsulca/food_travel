@@ -1,0 +1,54 @@
+[
+    {
+        "id": 16783485596058165188870219699564950021,
+        "tipo": "DestinoCulinario",
+        "nombre": "la oveja loca de remate",
+        "tipo_cocina": "hindu",
+        "ingredientes": [
+            "oregano",
+            "cordero",
+            "sal"
+        ],
+        "precio_minimo": "5000",
+        "precio_maximo": "40000",
+        "popularidad": 5.0,
+        "disponibilidad": true,
+        "id_ubicacion": 888888,
+        "imagen": "imagen"
+    },
+    {
+        "id": 94168993065188312381854993468495468786,
+        "tipo": "DestinoCulinario",
+        "nombre": "el conejo de chocolate",
+        "tipo_cocina": "dulce",
+        "ingredientes": [
+            "chocolate",
+            "cremas",
+            "azucar",
+            "frutas"
+        ],
+        "precio_minimo": 600.0,
+        "precio_maximo": 5000.0,
+        "popularidad": 4.7,
+        "disponibilidad": true,
+        "id_ubicacion": 888888,
+        "imagen": "imagen"
+    },
+    {
+        "id": 112311903049457241179833065189352168893,
+        "tipo": "DestinoCulinario",
+        "nombre": "el vegetariano",
+        "tipo_cocina": "vegetariana",
+        "ingredientes": [
+            "verdura",
+            "sal",
+            "huevos"
+        ],
+        "precio_minimo": 1555.0,
+        "precio_maximo": 8888.0,
+        "popularidad": 5.0,
+        "disponibilidad": true,
+        "id_ubicacion": 88888,
+        "imagen": "imagen"
+    }
+]
