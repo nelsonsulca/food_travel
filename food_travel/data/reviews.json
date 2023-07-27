@@ -1,11 +1,11 @@
 [
     {
-        "id": 3478064264684197524966413077363733887,
+        "id": 32809876574619868033465357368815213950,
         "tipo": "Review",
-        "id_destino": 558888,
-        "id_usuario": 888888,
+        "id_destino": 44444,
+        "id_usuario": 555555,
         "calificacion": 4,
-        "comentario": "la comida era un verdadero asco y le faltaba mucha sal",
-        "animo": "Negativo"
+        "comentario": "la comida estaba fea",
+        "animo": "Positivo"
     }
 ]
